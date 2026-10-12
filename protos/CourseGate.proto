@@ -1,0 +1,21 @@
+#VRML_SIM R2025a utf8
+PROTO CourseGate [
+  field SFVec3f translation 0 0 -50
+  field SFRotation rotation 0 0 1 0
+  field SFColor color 1 0.78 0.08
+]
+{
+  Transform {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Shape {
+        appearance PBRAppearance {
+          baseColor IS color
+          emissiveColor 0.16 0.08 0.0
+        }
+        geometry Box { size 0.09 1.38 0.015 }
+      }
+    ]
+  }
+}

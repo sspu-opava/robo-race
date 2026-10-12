@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "competition_config_id": "junior-track-v1-physics-v2",
+  "entries": [
+    {
+      "nickname": "Hrac-001",
+      "utc": "2026-10-10T22:06:18+00:00",
+      "raw_time": 13.312,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 13.312,
+      "source": "PLYN(65)\nDOPREDU(4)\nBRZDA(0.6)\nVLEVO(70, 1.3)\nVLEVO(70, 1.3)\nPLYN(55)\nDOPREDU(1.5)\nVPRAVO(70, 1.3)\nVPRAVO(60, 1.3)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Hrac-001",
+          "utc": "2026-10-10T22:06:18+00:00",
+          "raw_time": 13.312,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 13.312,
+          "source": "PLYN(65)\nDOPREDU(4)\nBRZDA(0.6)\nVLEVO(70, 1.3)\nVLEVO(70, 1.3)\nPLYN(55)\nDOPREDU(1.5)\nVPRAVO(70, 1.3)\nVPRAVO(60, 1.3)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Josef",
+      "utc": "2026-10-10T22:06:44+00:00",
+      "raw_time": 13.312,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 13.312,
+      "source": "PLYN(65)\nDOPREDU(4)\nBRZDA(0.6)\nVLEVO(70, 1.3)\nVLEVO(70, 1.3)\nPLYN(55)\nDOPREDU(1.5)\nVPRAVO(70, 1.3)\nVPRAVO(60, 1.3)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Josef",
+          "utc": "2026-10-10T22:06:44+00:00",
+          "raw_time": 13.312,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 13.312,
+          "source": "PLYN(65)\nDOPREDU(4)\nBRZDA(0.6)\nVLEVO(70, 1.3)\nVLEVO(70, 1.3)\nPLYN(55)\nDOPREDU(1.5)\nVPRAVO(70, 1.3)\nVPRAVO(60, 1.3)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Milan",
+      "utc": "2026-10-10T22:09:30+00:00",
+      "raw_time": 12.336,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 12.336,
+      "source": "PLYN(65)\nDOPREDU(4)\nBRZDA(0.1)\nVLEVO(70, 1.2)\nVLEVO(70, 1.2)\nPLYN(65)\nDOPREDU(1.4)\nVPRAVO(70, 1.4)\nVPRAVO(30, 1.3)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Milan",
+          "utc": "2026-10-10T22:09:30+00:00",
+          "raw_time": 12.336,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 12.336,
+          "source": "PLYN(65)\nDOPREDU(4)\nBRZDA(0.1)\nVLEVO(70, 1.2)\nVLEVO(70, 1.2)\nPLYN(65)\nDOPREDU(1.4)\nVPRAVO(70, 1.4)\nVPRAVO(30, 1.3)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Erik",
+      "utc": "2026-10-10T22:12:17+00:00",
+      "raw_time": 10.832,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 10.832,
+      "source": "PLYN(75)\nDOPREDU(3.5)\nBRZDA(0.1)\nVLEVO(70, 1.2)\nVLEVO(50, 1.2)\nPLYN(95)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Erik",
+          "utc": "2026-10-10T22:12:17+00:00",
+          "raw_time": 10.832,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 10.832,
+          "source": "PLYN(75)\nDOPREDU(3.5)\nBRZDA(0.1)\nVLEVO(70, 1.2)\nVLEVO(50, 1.2)\nPLYN(95)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Jan",
+      "utc": "2026-10-10T22:15:53+00:00",
+      "raw_time": 9.136,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 9.136,
+      "source": "PLYN(95)\nDOPREDU(2.6)\nVLEVO(80, 1)\nVLEVO(50, 1)\nPLYN(95)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Jan",
+          "utc": "2026-10-10T22:15:53+00:00",
+          "raw_time": 9.136,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 9.136,
+          "source": "PLYN(95)\nDOPREDU(2.6)\nVLEVO(80, 1)\nVLEVO(50, 1)\nPLYN(95)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        },
+        {
+          "nickname": "Jan",
+          "utc": "2026-10-10T22:16:11+00:00",
+          "raw_time": 9.136,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 9.136,
+          "source": "PLYN(95)\nDOPREDU(2.6)\nVLEVO(80, 1)\nVLEVO(50, 1)\nPLYN(95)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Fred",
+      "utc": "2026-10-10T22:17:59+00:00",
+      "raw_time": 9.072,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 9.072,
+      "source": "PLYN(100)\nDOPREDU(2.5)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Fred",
+          "utc": "2026-10-10T22:17:59+00:00",
+          "raw_time": 9.072,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 9.072,
+          "source": "PLYN(100)\nDOPREDU(2.5)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.6)\nVPRAVO(70, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Ivo",
+      "utc": "2026-10-10T22:19:30+00:00",
+      "raw_time": 9.04,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 9.04,
+      "source": "PLYN(100)\nDOPREDU(2.4)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.6)\nVPRAVO(80, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Ivo",
+          "utc": "2026-10-10T22:19:30+00:00",
+          "raw_time": 9.04,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 9.04,
+          "source": "PLYN(100)\nDOPREDU(2.4)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.6)\nVPRAVO(80, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Mojmír",
+      "utc": "2026-10-10T22:21:02+00:00",
+      "raw_time": 8.992,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 8.992,
+      "source": "PLYN(100)\nDOPREDU(2.35)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.55)\nVPRAVO(80, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Mojmír",
+          "utc": "2026-10-10T22:21:02+00:00",
+          "raw_time": 8.992,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 8.992,
+          "source": "PLYN(100)\nDOPREDU(2.35)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.55)\nVPRAVO(80, 1)\nVPRAVO(40, 1)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    },
+    {
+      "nickname": "Jindra",
+      "utc": "2026-10-10T22:25:55+00:00",
+      "raw_time": 8.96,
+      "penalties": 0,
+      "penalty_seconds": 0.0,
+      "final_time": 8.96,
+      "source": "PLYN(100)\nDOPREDU(2.33)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.52)\nVPRAVO(90, 0.9)\nVPRAVO(40, 0.9)\nPLYN(100)\nDOPREDU(4)\n\n",
+      "competition_config_id": "junior-track-v1-physics-v2",
+      "official_runs": [
+        {
+          "nickname": "Jindra",
+          "utc": "2026-10-10T22:25:55+00:00",
+          "raw_time": 8.96,
+          "penalties": 0,
+          "penalty_seconds": 0.0,
+          "final_time": 8.96,
+          "source": "PLYN(100)\nDOPREDU(2.33)\nVLEVO(90, 1)\nVLEVO(50, 1)\nPLYN(100)\nDOPREDU(0.52)\nVPRAVO(90, 0.9)\nVPRAVO(40, 0.9)\nPLYN(100)\nDOPREDU(4)\n\n",
+          "competition_config_id": "junior-track-v1-physics-v2"
+        }
+      ]
+    }
+  ]
+}

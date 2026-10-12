@@ -1,0 +1,161 @@
+{
+  "webots": "R2025a",
+  "date": "2026-10-11",
+  "configuration": "junior-track-v2-level-1",
+  "configurations": {
+    "1": "junior-track-v2-level-1",
+    "2": "junior-track-v2-level-2",
+    "3": "junior-track-v2-level-3"
+  },
+  "python_tests_passed": 22,
+  "physical_cases": [
+    {
+      "name": "forward",
+      "passed": true,
+      "raw_time": 4.096,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "reverse",
+      "passed": true,
+      "raw_time": 3.104,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "left",
+      "passed": true,
+      "raw_time": 3.392,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "right",
+      "passed": true,
+      "raw_time": 3.392,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "reverse-left",
+      "passed": true,
+      "raw_time": 3.504,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "reverse-right",
+      "passed": true,
+      "raw_time": 3.504,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "cone-contact",
+      "passed": true,
+      "raw_time": 4.096,
+      "valid_race": false,
+      "penalties": 1
+    },
+    {
+      "name": "outside",
+      "passed": true,
+      "raw_time": 1.552,
+      "valid_race": false,
+      "penalties": 0
+    },
+    {
+      "name": "sample-1",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-2",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-3",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-4",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-5",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-6",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-7",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-8",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-9",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "sample-10",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "level-2-sample",
+      "passed": true,
+      "raw_time": 20.384,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "level-3-sample",
+      "passed": true,
+      "raw_time": 21.264,
+      "valid_race": true,
+      "penalties": 0
+    },
+    {
+      "name": "official",
+      "passed": true,
+      "raw_time": 20.368,
+      "valid_race": true,
+      "penalties": 0
+    }
+  ],
+  "robot_window_smoke": "passed"
+}

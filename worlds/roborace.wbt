@@ -1,0 +1,190 @@
+#VRML_SIM R2025a utf8
+EXTERNPROTO "../protos/RoboRaceCar.proto"
+EXTERNPROTO "../protos/CourseRoad.proto"
+EXTERNPROTO "../protos/CourseGate.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  coordinateSystem "ENU"
+  gravity 9.81
+  contactProperties [
+    ContactProperties {
+      material1 "tire"
+      material2 "track"
+      coulombFriction 1.7
+      bounce 0
+    }
+    ContactProperties {
+      material1 "cone"
+      material2 "track"
+      coulombFriction 0.8
+      bounce 0
+    }
+  ]
+}
+# ENU Viewpoint looks along local +X, with local +Z up. Yaw +90 degrees
+# and pitch towards the arena centre; rotating around X alone looks off-track.
+DEF COURSE_VIEW Viewpoint {
+  orientation -0.413223395 0.413223395 0.811475725 1.778194113
+  position 0 -8 11
+  fieldOfView 0.9
+}
+Background { skyColor [ 0.025 0.045 0.075 ] }
+DirectionalLight { direction -0.4 0.3 -1 intensity 2.4 ambientIntensity 0.35 }
+PointLight { location 0 0 4 intensity 1.2 radius 12 attenuation 0 0 1 }
+
+# Dark arena slab. The Robot's local X/Y plane and world XY plane are horizontal;
+# world Z is height throughout this project.
+Solid {
+  translation 0 0 -0.06
+  children [ Shape { appearance PBRAppearance { baseColor 0.035 0.055 0.075 roughness 0.92 } geometry Box { size 12.0 7.2 0.12 } } ]
+  name "arena"
+  contactMaterial "track"
+  boundingObject Box { size 12.0 7.2 0.12 }
+}
+
+DEF CLASSIC_COURSE_ART Transform { translation 0 0 0 children [
+# Track surface: two straights joined by a cross-shaped corner area.
+Transform { translation -1.9 -1.5 0.008 children [ Shape { appearance PBRAppearance { baseColor 0.78 0.82 0.84 roughness 0.82 } geometry Box { size 4.6 1.42 0.012 } } ] }
+Transform { translation 0 0 0.009 children [ Shape { appearance PBRAppearance { baseColor 0.78 0.82 0.84 roughness 0.82 } geometry Box { size 1.42 3.05 0.014 } } ] }
+Transform { translation 1.9 1.5 0.008 children [ Shape { appearance PBRAppearance { baseColor 0.78 0.82 0.84 roughness 0.82 } geometry Box { size 4.6 1.42 0.012 } } ] }
+
+# Static barriers, with a reflective orange cap stripe.
+DEF WALL_1 Solid { translation -1.9 -2.24 0.12 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.17 0.21 } geometry Box { size 4.65 0.08 0.24 } } Transform { translation 0 0 0.105 children [ Shape { appearance PBRAppearance { baseColor 1 0.36 0.04 emissiveColor 0.12 0.025 0.0 } geometry Box { size 4.66 0.085 0.025 } } ] } ] name "rail_start_outer" boundingObject Box { size 4.65 0.08 0.24 } }
+DEF WALL_2 Solid { translation -2.4925 -0.76 0.12 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.17 0.21 } geometry Box { size 3.465 0.08 0.24 } } Transform { translation 0 0 0.105 children [ Shape { appearance PBRAppearance { baseColor 1 0.36 0.04 emissiveColor 0.12 0.025 0.0 } geometry Box { size 3.475 0.085 0.025 } } ] } ] name "rail_start_inner" boundingObject Box { size 3.465 0.08 0.24 } }
+DEF WALL_3 Solid { translation -0.76 0.0 0.12 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.17 0.21 } geometry Box { size 0.08 1.52 0.24 } } Transform { translation 0 0 0.105 children [ Shape { appearance PBRAppearance { baseColor 1 0.36 0.04 emissiveColor 0.12 0.025 0.0 } geometry Box { size 0.085 1.53 0.025 } } ] } ] name "rail_turn_left" boundingObject Box { size 0.08 1.52 0.24 } }
+DEF WALL_4 Solid { translation 0.76 0.0 0.12 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.17 0.21 } geometry Box { size 0.08 1.52 0.24 } } Transform { translation 0 0 0.105 children [ Shape { appearance PBRAppearance { baseColor 1 0.36 0.04 emissiveColor 0.12 0.025 0.0 } geometry Box { size 0.085 1.53 0.025 } } ] } ] name "rail_turn_right" boundingObject Box { size 0.08 1.52 0.24 } }
+DEF WALL_5 Solid { translation 2.4925 0.76 0.12 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.17 0.21 } geometry Box { size 3.465 0.08 0.24 } } Transform { translation 0 0 0.105 children [ Shape { appearance PBRAppearance { baseColor 1 0.36 0.04 emissiveColor 0.12 0.025 0.0 } geometry Box { size 3.475 0.085 0.025 } } ] } ] name "rail_finish_inner" boundingObject Box { size 3.465 0.08 0.24 } }
+DEF WALL_6 Solid { translation 2.4925 2.24 0.12 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.17 0.21 } geometry Box { size 3.465 0.08 0.24 } } Transform { translation 0 0 0.105 children [ Shape { appearance PBRAppearance { baseColor 1 0.36 0.04 emissiveColor 0.12 0.025 0.0 } geometry Box { size 3.475 0.085 0.025 } } ] } ] name "rail_finish_outer" boundingObject Box { size 3.465 0.08 0.24 } }
+
+# Gate markings are visual only; the Supervisor checks finite directed crossings.
+Transform { translation -3.1 -1.5 0.019 children [ Shape { appearance PBRAppearance { baseColor 0.0 0.82 0.82 emissiveColor 0.0 0.2 0.2 } geometry Box { size 0.13 1.4 0.01 } } ] }
+Transform { translation -2.4 -1.5 0.02 children [ Shape { appearance PBRAppearance { baseColor 1 0.78 0.08 emissiveColor 0.18 0.11 0.0 } geometry Box { size 0.09 1.26 0.012 } } ] }
+Transform { translation 0 -0.05 0.02 children [ Shape { appearance PBRAppearance { baseColor 1 0.78 0.08 emissiveColor 0.18 0.11 0.0 } geometry Box { size 1.25 0.09 0.012 } } ] }
+Transform { translation 2 1.5 0.02 children [ Shape { appearance PBRAppearance { baseColor 1 0.78 0.08 emissiveColor 0.18 0.11 0.0 } geometry Box { size 0.09 1.26 0.012 } } ] }
+Transform { translation 3.35 1.5 0.021 children [ Shape { appearance PBRAppearance { baseColor 0.12 0.95 0.38 emissiveColor 0.0 0.2 0.05 } geometry Box { size 0.15 1.4 0.015 } } ] }
+ ] }
+
+# Course features start safely outside the arena. Supervisor places only the
+# selected level's real collision shapes on the route before each run.
+DEF BUMP_1 Solid { translation 0 0 -50 rotation 0 0 1 0 children [ Shape { appearance PBRAppearance { baseColor 0.48 0.60 0.64 roughness 0.8 } geometry Box { size 0.42 1.30 0.08 } } ] name "vlnka 1" contactMaterial "track" boundingObject Box { size 0.42 1.30 0.08 } }
+DEF BUMP_2 Solid { translation 0 0 -50 rotation 0 0 1 0 children [ Shape { appearance PBRAppearance { baseColor 0.48 0.60 0.64 roughness 0.8 } geometry Box { size 0.42 1.30 0.08 } } ] name "vlnka 2" contactMaterial "track" boundingObject Box { size 0.42 1.30 0.08 } }
+DEF BUMP_3 Solid { translation 0 0 -50 rotation 0 0 1 0 children [ Shape { appearance PBRAppearance { baseColor 0.42 0.52 0.58 roughness 0.8 } geometry Box { size 0.42 1.30 0.08 } } ] name "vlnka 3" contactMaterial "track" boundingObject Box { size 0.42 1.30 0.08 } }
+DEF BUMP_4 Solid { translation 0 0 -50 rotation 0 0 1 0 children [ Shape { appearance PBRAppearance { baseColor 0.42 0.52 0.58 roughness 0.8 } geometry Box { size 0.42 1.30 0.08 } } ] name "vlnka 4" contactMaterial "track" boundingObject Box { size 0.42 1.30 0.08 } }
+
+# Barriers are positioned on selected lanes for levels 3 and 4.
+DEF CHICANE_1 Solid { translation 0 0 -50 children [ Shape { appearance PBRAppearance { baseColor 0.94 0.30 0.055 roughness 0.55 } geometry Box { size 0.34 0.54 0.30 } } ] name "slalomová bariéra 1" contactMaterial "cone" boundingObject Box { size 0.34 0.54 0.30 } physics Physics { density -1 mass 0.35 } }
+DEF CHICANE_2 Solid { translation 0 0 -50 children [ Shape { appearance PBRAppearance { baseColor 0.94 0.30 0.055 roughness 0.55 } geometry Box { size 0.34 0.54 0.30 } } ] name "slalomová bariéra 2" contactMaterial "cone" boundingObject Box { size 0.34 0.54 0.30 } physics Physics { density -1 mass 0.35 } }
+DEF CHICANE_3 Solid { translation 0 0 -50 children [ Shape { appearance PBRAppearance { baseColor 0.94 0.30 0.055 roughness 0.55 } geometry Box { size 0.34 0.54 0.30 } } ] name "slalomová bariéra 3" contactMaterial "cone" boundingObject Box { size 0.34 0.54 0.30 } physics Physics { density -1 mass 0.35 } }
+DEF CHICANE_4 Solid { translation 0 0 -50 children [ Shape { appearance PBRAppearance { baseColor 0.94 0.30 0.055 roughness 0.55 } geometry Box { size 0.34 0.54 0.30 } } ] name "slalomová bariéra 4" contactMaterial "cone" boundingObject Box { size 0.34 0.54 0.30 } physics Physics { density -1 mass 0.35 } }
+
+DEF CLASSIC_CHECKPOINT_LABELS Transform { translation 0 0 0 children [
+# Large flat seven-segment checkpoint labels, facing the overhead camera.
+Transform { translation -2.55 -1.08 0.03 children [
+  Transform { translation -0.13 0 0 children [
+    Transform { translation 0 0.12 0 children [ Shape { appearance DEF NUM_MAT PBRAppearance { baseColor 0.98 0.72 0.12 emissiveColor 0.2 0.1 0.0 } geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation 0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 -0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation -0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation -0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+  ] }
+  Transform { translation 0.13 0 0 children [
+    Transform { translation 0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+  ] }
+] }
+Transform { translation 0.23 -0.13 0.03 children [
+  Transform { translation -0.13 0 0 children [
+    Transform { translation 0 0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation 0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 -0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation -0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation -0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+  ] }
+  Transform { translation 0.13 0 0 children [
+    Transform { translation 0 0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation 0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 0 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation -0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 -0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+  ] }
+] }
+Transform { translation 1.72 1.96 0.03 children [
+  Transform { translation -0.13 0 0 children [
+    Transform { translation 0 0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation 0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 -0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation -0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation -0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+  ] }
+  Transform { translation 0.13 0 0 children [
+    Transform { translation 0 0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation 0.075 0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 0 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+    Transform { translation 0.075 -0.06 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.025 0.09 0.008 } } ] }
+    Transform { translation 0 -0.12 0 children [ Shape { appearance USE NUM_MAT geometry Box { size 0.17 0.025 0.008 } } ] }
+  ] }
+] }
+ ] }
+
+# Three individually identified rigid obstacles. Their collision shapes and
+# physical bodies are real; scoring uses the measured overlap of the car box.
+DEF CONE_1 Solid {
+  translation -1.45 -2.00 0.13
+  children [ Shape { appearance PBRAppearance { baseColor 1 0.32 0.045 roughness 0.65 } geometry Cone { bottomRadius 0.12 height 0.25 } } ]
+  name "kužel 1"
+  contactMaterial "cone"
+  boundingObject Cylinder { height 0.25 radius 0.12 }
+  physics Physics { density -1 mass 0.22 }
+}
+DEF CONE_2 Solid {
+  translation 0.47 0.35 0.13
+  children [ Shape { appearance PBRAppearance { baseColor 1 0.32 0.045 roughness 0.65 } geometry Cone { bottomRadius 0.12 height 0.25 } } ]
+  name "kužel 2"
+  contactMaterial "cone"
+  boundingObject Cylinder { height 0.25 radius 0.12 }
+  physics Physics { density -1 mass 0.22 }
+}
+DEF CONE_3 Solid {
+  translation 2.55 1.03 0.13
+  children [ Shape { appearance PBRAppearance { baseColor 1 0.32 0.045 roughness 0.65 } geometry Cone { bottomRadius 0.12 height 0.25 } } ]
+  name "kužel 3"
+  contactMaterial "cone"
+  boundingObject Cylinder { height 0.25 radius 0.12 }
+  physics Physics { density -1 mass 0.22 }
+}
+
+# Low-intensity decorative LED blocks along the outer arena edges.
+Transform { translation 0 -3.48 0.015 children [ Shape { appearance PBRAppearance { baseColor 0.0 0.75 0.78 emissiveColor 0.0 0.16 0.18 } geometry Box { size 5.7 0.025 0.02 } } ] }
+Transform { translation 0 3.48 0.015 children [ Shape { appearance PBRAppearance { baseColor 0.0 0.75 0.78 emissiveColor 0.0 0.16 0.18 } geometry Box { size 5.7 0.025 0.02 } } ] }
+Transform { translation -5.88 0 0.015 children [ Shape { appearance PBRAppearance { baseColor 0.0 0.75 0.78 emissiveColor 0.0 0.16 0.18 } geometry Box { size 0.025 6.9 0.02 } } ] }
+Transform { translation 5.88 0 0.015 children [ Shape { appearance PBRAppearance { baseColor 0.0 0.75 0.78 emissiveColor 0.0 0.16 0.18 } geometry Box { size 0.025 6.9 0.02 } } ] }
+
+# The Supervisor repositions the level 4 physical road tiles and its gates.
+DEF COURSE_ROAD_01 CourseRoad { name "horská trať 01" }
+DEF COURSE_ROAD_02 CourseRoad { name "horská trať 02" }
+DEF COURSE_ROAD_03 CourseRoad { name "horská trať 03" }
+DEF COURSE_ROAD_04 CourseRoad { name "horská trať 04" }
+DEF COURSE_ROAD_05 CourseRoad { name "horská trať 05" }
+DEF COURSE_ROAD_06 CourseRoad { name "horská trať 06" }
+DEF COURSE_ROAD_07 CourseRoad { name "horská trať 07" }
+DEF COURSE_ROAD_08 CourseRoad { name "horská trať 08" }
+DEF COURSE_ROAD_09 CourseRoad { name "horská trať 09" }
+DEF COURSE_ROAD_10 CourseRoad { name "horská trať 10" }
+DEF COURSE_ROAD_11 CourseRoad { name "horská trať 11" }
+DEF COURSE_ROAD_12 CourseRoad { name "horská trať 12" }
+DEF COURSE_ROAD_13 CourseRoad { name "horská trať 13" }
+DEF COURSE_ROAD_14 CourseRoad { name "horská trať 14" }
+DEF COURSE_ROAD_15 CourseRoad { name "horská trať 15" }
+DEF COURSE_ROAD_16 CourseRoad { name "horská trať 16" }
+DEF COURSE_ROAD_17 CourseRoad { name "horská trať 17" }
+DEF MOUNTAIN_GATE_START CourseGate { color 0 0.82 0.82 }
+DEF MOUNTAIN_GATE_1 CourseGate { }
+DEF MOUNTAIN_GATE_2 CourseGate { }
+DEF MOUNTAIN_GATE_3 CourseGate { }
+DEF MOUNTAIN_GATE_FINISH CourseGate { color 0.12 0.95 0.38 }
+
+DEF ROBORACE_CAR RoboRaceCar { }

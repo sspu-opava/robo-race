@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src ws://localhost:* ws://127.0.0.1:* ws://[::1]:* wss://localhost:* wss://127.0.0.1:* wss://[::1]:*; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RoboRace Junior</title>
+  <link rel="stylesheet" href="./style.css?v=panel-3">
+  <script type="module" src="./roborace.js?v=panel-3"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">RR</div>
+      <div class="brand-copy"><h1>RoboRace <span>JUNIOR</span></h1><p>Řídicí panel simulace</p></div>
+      <button class="help-button" id="helpButton" type="button" aria-label="Nápověda k ovládání a RoboScriptu" title="Nápověda">?</button>
+    </header>
+    <div class="connection" id="connection"><i aria-hidden="true"></i><span>Připojuji Webots…</span></div>
+
+    <section class="panel course-panel" aria-labelledby="courseTitle">
+      <div class="panel-heading"><div><span class="eyebrow">01 / TRAŤ</span><h2 id="courseTitle">Obtížnost trasy</h2></div><button class="small-button" id="restoreView" type="button">Zobrazit dráhu</button></div>
+      <label class="sr-only" for="courseLevel">Vyber obtížnost trasy</label>
+      <select id="courseLevel" disabled>
+        <option value="1">Úroveň 1 · Základní zatáčky</option>
+        <option value="2">Úroveň 2 · Nerovnosti</option>
+        <option value="3">Úroveň 3 · Slalom a překážky</option>
+        <option value="4">Úroveň 4 · Horská serpentina</option>
+      </select>
+      <p class="level-description" id="levelDescription">Připoj se k Webots a vyber si trať.</p>
+    </section>
+
+    <section class="dashboard" aria-label="Stav jízdy">
+      <div class="metric state-metric"><span class="eyebrow">STAV</span><strong id="raceState">Čekám na Webots</strong></div>
+      <div class="metric"><span class="eyebrow">ČAS</span><strong id="elapsed">00.00 <small>s</small></strong></div>
+      <div class="metric"><span class="eyebrow">BRÁNY</span><strong id="checkpoints">0 <small>/ 3</small></strong></div>
+      <div class="metric"><span class="eyebrow">PENALIZACE</span><strong id="penalties">0 <small>/ +0.00 s</small></strong></div>
+      <div class="metric best-metric"><span class="eyebrow">REKORD</span><strong id="bestTime">—</strong></div>
+    </section>
+
+    <section class="panel editor-panel" aria-labelledby="programTitle">
+      <div class="panel-heading"><div><span class="eyebrow">02 / PROGRAM</span><h2 id="programTitle">RoboScript</h2></div><span class="instruction-count" id="instructionCount">0 / 40</span></div>
+      <div class="editor-wrap">
+        <div class="line-gutter" id="lineNumbers" aria-hidden="true"></div>
+        <div class="editor-stage">
+          <pre class="code-highlight" id="codeHighlight" aria-hidden="true"></pre>
+          <textarea id="source" spellcheck="false" wrap="off" aria-label="Editor RoboScript" autocapitalize="off" autocomplete="off"></textarea>
+        </div>
+      </div>
+      <div class="editor-hint">Jeden příkaz na řádek · desetinná tečka · <button class="inline-help" id="editorHelp" type="button">Příkazy ?</button></div>
+      <div class="preset-row" aria-label="Příklady programů">
+        <button type="button" data-example="starter">Rovinka</button>
+        <button type="button" data-example="turn">Zatáčka</button>
+        <button type="button" data-example="sample">Celá ukázka</button>
+      </div>
+      <div class="player-form">
+        <label for="nickname">Soutěžící</label>
+        <div class="name-row"><input id="nickname" type="text" maxlength="20" placeholder="Přezdívka"><button class="small-button" id="newCompetitor" type="button">Nový</button></div>
+        <div class="attempt-note" id="attemptNote">Oficiální pokusy v této relaci: 2</div>
+      </div>
+      <div class="action-row">
+        <button class="button secondary" id="validate" type="button">Ověřit</button>
+        <button class="button test" id="test" type="button">Testovat</button>
+        <button class="button race" id="official" type="button">Soutěžit</button>
+        <button class="button reset" id="reset" type="button" title="Resetovat jízdu">Reset</button>
+      </div>
+      <div class="diagnostic" id="diagnostic" role="status" aria-live="polite"><span class="diagnostic-icon">i</span><span>Zkontroluj program a spusť první test.</span></div>
+    </section>
+
+    <section class="panel status-panel" aria-labelledby="statusTitle">
+      <div class="panel-heading"><div><span class="eyebrow">03 / TELEMETRIE</span><h2 id="statusTitle">Průběh jízdy</h2></div><span class="live-pill" id="livePill">ČEKÁ</span></div>
+      <div class="checkpoint-track" id="checkpointTrack">
+        <div class="track-line"></div>
+        <div class="checkpoint active" data-cp="0"><b>START</b><span>Odjezd</span></div>
+        <div class="checkpoint" data-cp="1"><b>01</b><span>Brána</span></div>
+        <div class="checkpoint" data-cp="2"><b>02</b><span>Brána</span></div>
+        <div class="checkpoint" data-cp="3"><b>03</b><span>Brána</span></div>
+        <div class="checkpoint finish" data-cp="4"><b>CÍL</b><span>Hotovo</span></div>
+      </div>
+      <div class="data-row"><span>Aktivní řádek</span><strong id="activeLine">—</strong></div>
+      <div class="data-row"><span>Poloha robota</span><strong id="position">—</strong></div>
+      <div class="result-card" id="resultCard" hidden>
+        <div class="result-title"><span id="resultIcon">✓</span><div><span class="eyebrow" id="resultEyebrow">VÝSLEDEK</span><h3 id="resultHeading">Cíl!</h3></div></div>
+        <p id="resultMessage"></p>
+        <div class="result-times"><div><span>Naměřeno</span><b id="resultRaw">—</b></div><div><span>Výsledný čas</span><b id="resultFinal">—</b></div></div>
+      </div>
+    </section>
+
+    <section class="panel leaderboard-panel" aria-labelledby="leaderboardTitle">
+      <div class="panel-heading"><div><span class="eyebrow">04 / VÝSLEDKY</span><h2 id="leaderboardTitle">Žebříček · TOP 10</h2></div><button class="text-button" id="adminReset" type="button">Správa</button></div>
+      <ol id="leaderboard" class="leaderboard"><li class="empty-row">Zatím tu nikdo není. První místo čeká na tebe.</li></ol>
+      <div class="config-note" id="configId">Konfigurace tratě: —</div>
+    </section>
+    <footer>RoboRace Junior · 40 příkazů · 32 s programu · limit 35 s</footer>
+  </main>
+
+  <dialog class="help-dialog" id="helpDialog" aria-labelledby="helpTitle">
+    <div class="dialog-heading"><div><span class="eyebrow">NÁPOVĚDA</span><h2 id="helpTitle">Ovládání hry</h2></div><button class="close-help" id="closeHelp" type="button" aria-label="Zavřít nápovědu">×</button></div>
+    <div class="dialog-body">
+      <p>Vyber trasu, napiš program a spusť <b>Testovat</b>. Až bude jízda fungovat, zadej přezdívku a zvol <b>Soutěžit</b>. Tlačítko <b>Zobrazit dráhu</b> obnoví pohled ve Webots.</p>
+      <h3>RoboScript 1.0</h3>
+      <div class="command-grid">
+        <div><code>PLYN(p)</code><span>Pohon 0–100 %.</span></div>
+        <div><code>DOPREDU(t)</code><span>Jízda vpřed po dobu t sekund.</span></div>
+        <div><code>DOZADU(t)</code><span>Couvání po dobu t sekund.</span></div>
+        <div><code>VLEVO(k, t)</code><span>Oblouk vlevo: intenzita k, čas t.</span></div>
+        <div><code>VPRAVO(k, t)</code><span>Oblouk vpravo: intenzita k, čas t.</span></div>
+        <div><code>BRZDA(t)</code><span>Aktivní brzdění po dobu t sekund.</span></div>
+      </div>
+      <p class="physics-tip">Jeden příkaz na řádek, velká písmena, desetinná tečka. Fyzika má setrvačnost: příliš rychlá zatáčka může robota vynést z koridoru.</p>
+    </div>
+  </dialog>
+</body>
+</html>
